@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 class Date extends StatelessWidget {
-  final date;
-  final textColor;
-  final shadowColor;
+  final _date;
+  final _textColor;
+  final _shadowColor;
 
-  Date(this.date, this.textColor, this.shadowColor);
+  Date(this._date, this._textColor, this._shadowColor);
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = MediaQuery.of(context).size.width / 3.5;
+    final _fontSize = MediaQuery.of(context).size.width / 3.5;
 
-    final dateTextStyle = TextStyle(
-      color: textColor,
+    final _dateTextStyle = TextStyle(
+      color: _textColor,
       fontFamily: 'Beon',
-      fontSize: fontSize / 4.5,
+      fontSize: _fontSize / 4.5,
       shadows: [
         Shadow(
           blurRadius: 8.0,
-          color: shadowColor,
+          color: _shadowColor,
           offset: Offset(0, 0),
         ),
       ],
@@ -26,8 +26,8 @@ class Date extends StatelessWidget {
 
     return Container(
       child: DefaultTextStyle(
-        style: dateTextStyle,
-        child: Text(date),
+        style: _dateTextStyle,
+        child: Text(_date),
       ),
     );
   }

@@ -1,47 +1,47 @@
 import 'package:flutter/material.dart';
 
 class Time extends StatelessWidget {
-  final hour;
-  final minute;
-  final second;
-  final ampm;
-  final textColor;
-  final shadowColor;
+  final _hour;
+  final _minute;
+  final _second;
+  final _ampm;
+  final _textColor;
+  final _shadowColor;
 
   Time(
-    this.hour,
-    this.minute,
-    this.second,
-    this.ampm,
-    this.textColor,
-    this.shadowColor,
+    this._hour,
+    this._minute,
+    this._second,
+    this._ampm,
+    this._textColor,
+    this._shadowColor,
   );
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = MediaQuery.of(context).size.width / 3.5;
+    final _fontSize = MediaQuery.of(context).size.width / 3.5;
 
-    final defaultTextStyle = TextStyle(
-      color: textColor,
+    final _defaultTextStyle = TextStyle(
+      color: _textColor,
       fontFamily: 'Beon',
-      fontSize: fontSize,
+      fontSize: _fontSize,
       shadows: [
         Shadow(
           blurRadius: 8.0,
-          color: shadowColor,
+          color: _shadowColor,
           offset: Offset(0, 0),
         ),
       ],
     );
 
-    final subTextStyle = TextStyle(
-      color: textColor,
+    final _subTextStyle = TextStyle(
+      color: _textColor,
       fontFamily: 'Beon',
-      fontSize: fontSize / 3.5,
+      fontSize: _fontSize / 3.5,
       shadows: [
         Shadow(
           blurRadius: 8.0,
-          color: shadowColor,
+          color: _shadowColor,
           offset: Offset(0, 0),
         ),
       ],
@@ -50,22 +50,22 @@ class Time extends StatelessWidget {
     return Container(
         alignment: Alignment.center,
         child: DefaultTextStyle(
-          style: defaultTextStyle,
+          style: _defaultTextStyle,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(hour),
+              Text(_hour),
               Text(':'),
-              Text(minute),
+              Text(_minute),
               DefaultTextStyle(
-                style: subTextStyle,
+                style: _subTextStyle,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(height: 28),
-                    Text(second),
+                    Text(_second),
                     SizedBox(width: 100),
-                    Text(ampm),
+                    Text(_ampm),
                   ],
                 ),
               )

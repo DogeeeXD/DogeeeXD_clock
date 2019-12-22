@@ -24,7 +24,7 @@ final _lightTheme = {
 };
 
 final _darkTheme = {
-  _Element.background: Colors.black87,
+  _Element.background: Color(0xFF2A1717),
   _Element.text: Colors.white,
   _Element.shadow: Colors.red,
 };
@@ -34,7 +34,6 @@ final _darkTheme = {
 /// You can do better than this!
 class DigitalClock extends StatefulWidget {
   const DigitalClock(this.model);
-
   final ClockModel model;
 
   @override
@@ -98,37 +97,27 @@ class _DigitalClockState extends State<DigitalClock> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).brightness == Brightness.light
+    final _colors = Theme.of(context).brightness == Brightness.light
         ? _lightTheme
         : _darkTheme;
-    final date = DateFormat.yMMMEd().format(_dateTime);
-    final hour =
+    final _date = DateFormat.yMMMEd().format(_dateTime);
+    final _hour =
         DateFormat(widget.model.is24HourFormat ? 'HH' : 'hh').format(_dateTime);
-    final minute = DateFormat('mm').format(_dateTime);
-    final second = DateFormat('ss').format(_dateTime);
-    final ampm = DateFormat('a').format(_dateTime);
-    final weather = widget.model.weatherString;
-    final temperature = widget.model.temperatureString;
-    final textColor = colors[_Element.text];
-    final shadowColor = colors[_Element.shadow];
+    final _minute = DateFormat('mm').format(_dateTime);
+    final _second = DateFormat('ss').format(_dateTime);
+    final _ampm = DateFormat('a').format(_dateTime);
+    final _weather = widget.model.weatherString;
+    final _temperature = widget.model.temperatureString;
+    final _textColor = _colors[_Element.text];
+    final _shadowColor = _colors[_Element.shadow];
 
     return Container(
-        color: colors[_Element.background],
+        color: _colors[_Element.background],
         alignment: Alignment.center,
         child: Column(children: <Widget>[
-          Date(date, textColor, shadowColor),
-          Time(hour, minute, second, ampm, textColor, shadowColor),
-          Weather(weather, temperature, textColor, shadowColor),
+          Date(_date, _textColor, _shadowColor),
+          Time(_hour, _minute, _second, _ampm, _textColor, _shadowColor),
+          Weather(_weather, _temperature, _textColor, _shadowColor),
         ]));
   }
 }
-
-//
-/* AnimatedDefaultTextStyle(
-                style: _clockStarted
-              ? defaultStyle
-              : redStyle,
-                curve: Curves.linear,
-                duration: Duration(seconds: 1),
-                child: Text(':'),
-              ), */
